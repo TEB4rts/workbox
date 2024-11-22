@@ -6,6 +6,5 @@ import { developmentTemplates } from './templates/developmentTemplates';
 export const contractTemplates: ContractTemplate[] = [
   ...writingTemplates,
   ...designTemplates,
-  ...developmentTemplates,
-  // Additional templates can be imported from other category files
+  ...developmentTemplates
 ];

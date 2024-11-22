@@ -14,36 +14,34 @@ export const developmentTemplates: ContractTemplate[] = [
     ],
     popular: true,
     logoPlaceholder: "https://images.unsplash.com/photo-1518770660439-4636190af475",
-    content: `[Your Logo Here]
-
-SOFTWARE DEVELOPMENT AGREEMENT
-
-THIS AGREEMENT is made on [Date] between:
-
-[Developer Name/Company]
-[Business Address]
-[Registration Details]
-(hereinafter referred to as the "Developer")
-
-AND
-
-[Client Name]
-[Client Address]
-(hereinafter referred to as the "Client")
-
-1. PROJECT SPECIFICATIONS
-The Developer agrees to develop:
-[Detailed project description]
-
-2. TECHNICAL REQUIREMENTS
-- Platform: [Specify]
-- Programming Languages: [List]
-- Frameworks: [List]
-
-3. DELIVERABLES & MILESTONES
-[Detailed timeline and deliverables]
-
-[Continue with standard terms...]`
+    content: `// ... keep existing code (contract content)`
   },
-  // ... 200+ more development templates
+  {
+    id: 402,
+    name: "Web Development Contract",
+    description: "Comprehensive agreement for web development services",
+    categoryId: 3,
+    details: [
+      "Website specifications",
+      "Hosting requirements",
+      "SEO implementation",
+      "Browser compatibility"
+    ],
+    logoPlaceholder: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+    content: `[Web Development Service Agreement]`
+  },
+  {
+    id: 403,
+    name: "Mobile App Development Contract",
+    description: "Specialized agreement for mobile application development",
+    categoryId: 3,
+    details: [
+      "App specifications",
+      "Platform requirements",
+      "API integration",
+      "App store submission"
+    ],
+    logoPlaceholder: "https://images.unsplash.com/photo-1522199755839-a2bacb67c546",
+    content: `[Mobile App Development Agreement]`
+  }
 ];
