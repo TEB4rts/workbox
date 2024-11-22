@@ -30,7 +30,7 @@ const activeContracts = [
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
-  const [activeTab, setActiveTab] = useState<'contracts' | 'proposals'>('contracts');
+  const [activeTab, setActiveTab] = useState<'contracts' | 'proposals' | 'invoices' | 'portfolio'>('contracts');
 
   const filteredTemplates = contractTemplates.filter((template) => {
     const matchesSearch = 
@@ -52,7 +52,7 @@ const Index = () => {
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Freelancer Dashboard</h1>
-            <p className="text-gray-600 mt-2">Manage your contracts and proposals efficiently</p>
+            <p className="text-gray-600 mt-2">Manage your contracts, proposals, invoices, and portfolio</p>
           </div>
           <div className="flex gap-4">
             <Button 
@@ -66,6 +66,18 @@ const Index = () => {
               onClick={() => setActiveTab('proposals')}
             >
               <FileSpreadsheet className="mr-2 h-4 w-4" /> Proposals
+            </Button>
+            <Button 
+              variant={activeTab === 'invoices' ? 'default' : 'outline'}
+              onClick={() => setActiveTab('invoices')}
+            >
+              <FileText className="mr-2 h-4 w-4" /> Invoices
+            </Button>
+            <Button 
+              variant={activeTab === 'portfolio' ? 'default' : 'outline'}
+              onClick={() => setActiveTab('portfolio')}
+            >
+              <FileSpreadsheet className="mr-2 h-4 w-4" /> Portfolio
             </Button>
           </div>
         </div>
@@ -91,17 +103,42 @@ const Index = () => {
           <Card className="animate-scale-in">
             <CardHeader>
               <CardTitle className="flex items-center">
-                <FileText className="mr-2 h-5 w-5 text-primary" />
-                {activeTab === 'contracts' ? 'Contract Templates' : 'Proposal Templates'}
+                {activeTab === 'contracts' && (
+                  <>
+                    <FileText className="mr-2 h-5 w-5 text-primary" />
+                    Contract Templates
+                  </>
+                )}
+                {activeTab === 'proposals' && (
+                  <>
+                    <FileSpreadsheet className="mr-2 h-5 w-5 text-primary" />
+                    Proposal Templates
+                  </>
+                )}
+                {activeTab === 'invoices' && (
+                  <>
+                    <FileText className="mr-2 h-5 w-5 text-primary" />
+                    Invoice Generator
+                  </>
+                )}
+                {activeTab === 'portfolio' && (
+                  <>
+                    <FileSpreadsheet className="mr-2 h-5 w-5 text-primary" />
+                    Portfolio Builder
+                  </>
+                )}
               </CardTitle>
               <CardDescription>
-                {activeTab === 'contracts' 
-                  ? 'Start from pre-made professional templates'
-                  : 'Create compelling proposals for your clients'}
+                {activeTab === 'contracts' && "Start from pre-made professional templates"}
+                {activeTab === 'proposals' && "Create compelling proposals for your clients"}
+                {activeTab === 'invoices' && "Generate professional invoices"}
+                {activeTab === 'portfolio' && "Build and showcase your work"}
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <ContractSearch onSearch={setSearchTerm} />
+              {(activeTab === 'contracts' || activeTab === 'proposals') && (
+                <ContractSearch onSearch={setSearchTerm} />
+              )}
               {activeTab === 'contracts' && (
                 <CategoryFilter
                   selectedCategory={selectedCategory}
@@ -109,14 +146,30 @@ const Index = () => {
                 />
               )}
               <div className="space-y-4">
-                {activeTab === 'contracts' 
-                  ? filteredTemplates.map((template) => (
-                      <ContractTemplateCard key={template.id} template={template} />
-                    ))
-                  : filteredProposals.map((template) => (
-                      <ProposalTemplateCard key={template.id} template={template} />
-                    ))
-                }
+                {activeTab === 'contracts' && 
+                  filteredTemplates.map((template) => (
+                    <ContractTemplateCard key={template.id} template={template} />
+                  ))}
+                {activeTab === 'proposals' && 
+                  filteredProposals.map((template) => (
+                    <ProposalTemplateCard key={template.id} template={template} />
+                  ))}
+                {activeTab === 'invoices' && (
+                  <Button
+                    className="w-full"
+                    onClick={() => window.location.href = '/invoice'}
+                  >
+                    Create New Invoice
+                  </Button>
+                )}
+                {activeTab === 'portfolio' && (
+                  <Button
+                    className="w-full"
+                    onClick={() => window.location.href = '/portfolio'}
+                  >
+                    Build Your Portfolio
+                  </Button>
+                )}
               </div>
             </CardContent>
           </Card>

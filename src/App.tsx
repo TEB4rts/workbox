@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Editor from "./pages/Editor";
 import ProposalEditor from "./pages/ProposalEditor";
+import InvoiceGenerator from "./pages/InvoiceGenerator";
+import PortfolioBuilder from "./pages/PortfolioBuilder";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +21,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/editor/:templateId" element={<Editor />} />
           <Route path="/proposal/:templateId" element={<ProposalEditor />} />
+          <Route path="/invoice" element={<InvoiceGenerator />} />
+          <Route path="/portfolio" element={<PortfolioBuilder />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
