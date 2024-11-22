@@ -6,13 +6,14 @@ import ContractTemplateCard from "@/components/ContractTemplateCard";
 import ContractSearch from "@/components/ContractSearch";
 import CategoryFilter from "@/components/CategoryFilter";
 import ProposalTemplateCard from "@/components/ProposalTemplateCard";
+import ToolsSection from "@/components/ToolsSection";
 import { contractTemplates } from "@/data/contractTemplates";
 import { proposalTemplates } from "@/data/proposalTemplates";
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
-  const [activeTab, setActiveTab] = useState<'contracts' | 'proposals' | 'invoices' | 'portfolio'>('contracts');
+  const [activeTab, setActiveTab] = useState<'contracts' | 'proposals' | 'invoices' | 'portfolio' | 'tools'>('contracts');
 
   const filteredTemplates = contractTemplates.filter((template) => {
     const matchesSearch = 
@@ -34,7 +35,7 @@ const Index = () => {
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Freelancer Resources</h1>
-            <p className="text-gray-600 mt-2">Access professional templates for your freelance business</p>
+            <p className="text-gray-600 mt-2">Access professional templates and tools for your freelance business</p>
           </div>
           <div className="flex gap-4">
             <Button 
@@ -60,6 +61,12 @@ const Index = () => {
               onClick={() => setActiveTab('portfolio')}
             >
               <FileSpreadsheet className="mr-2 h-4 w-4" /> Portfolio
+            </Button>
+            <Button 
+              variant={activeTab === 'tools' ? 'default' : 'outline'}
+              onClick={() => setActiveTab('tools')}
+            >
+              <FileSpreadsheet className="mr-2 h-4 w-4" /> Tools
             </Button>
           </div>
         </div>
@@ -91,12 +98,19 @@ const Index = () => {
                   Portfolio Builder
                 </>
               )}
+              {activeTab === 'tools' && (
+                <>
+                  <FileSpreadsheet className="mr-2 h-5 w-5 text-primary" />
+                  Freelancer Tools
+                </>
+              )}
             </CardTitle>
             <CardDescription>
               {activeTab === 'contracts' && "Start from pre-made professional templates"}
               {activeTab === 'proposals' && "Create compelling proposals for your clients"}
               {activeTab === 'invoices' && "Generate professional invoices"}
               {activeTab === 'portfolio' && "Build and showcase your work"}
+              {activeTab === 'tools' && "Essential tools for freelancers"}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -133,6 +147,9 @@ const Index = () => {
                 >
                   Build Your Portfolio
                 </Button>
+              )}
+              {activeTab === 'tools' && (
+                <ToolsSection />
               )}
             </div>
           </CardContent>

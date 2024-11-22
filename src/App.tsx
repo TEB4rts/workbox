@@ -8,6 +8,12 @@ import Editor from "./pages/Editor";
 import ProposalEditor from "./pages/ProposalEditor";
 import InvoiceGenerator from "./pages/InvoiceGenerator";
 import PortfolioBuilder from "./pages/PortfolioBuilder";
+import RateCalculator from "./pages/tools/RateCalculator";
+import TimeTracker from "./pages/tools/TimeTracker";
+import Timeline from "./pages/tools/Timeline";
+import DeadlineCalculator from "./pages/tools/DeadlineCalculator";
+import AgreementGenerator from "./pages/tools/AgreementGenerator";
+import ScopeBuilder from "./pages/tools/ScopeBuilder";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +29,12 @@ const App = () => (
           <Route path="/proposal/:templateId" element={<ProposalEditor />} />
           <Route path="/invoice" element={<InvoiceGenerator />} />
           <Route path="/portfolio" element={<PortfolioBuilder />} />
+          <Route path="/tools/rate-calculator" element={<RateCalculator />} />
+          <Route path="/tools/time-tracker" element={<TimeTracker />} />
+          <Route path="/tools/timeline" element={<Timeline />} />
+          <Route path="/tools/deadline-calculator" element={<DeadlineCalculator />} />
+          <Route path="/tools/agreement-generator" element={<AgreementGenerator />} />
+          <Route path="/tools/scope-builder" element={<ScopeBuilder />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
