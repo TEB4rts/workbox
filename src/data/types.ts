@@ -7,4 +7,13 @@ export interface ContractTemplate {
   content: string;
   popular?: boolean;
   logoPlaceholder?: string;
+  fields?: {
+    client?: string;
+    freelancer?: string;
+    contentType?: string;
+    startDate?: string;
+    endDate?: string;
+    paymentAmount?: string;
+    revisions?: number;
+  };
 }
