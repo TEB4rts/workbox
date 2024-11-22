@@ -5,6 +5,7 @@ import { Plus, Clock, FileText } from "lucide-react";
 import ContractTemplateCard from "@/components/ContractTemplateCard";
 import ContractSearch from "@/components/ContractSearch";
 import CategoryFilter from "@/components/CategoryFilter";
+import ActiveContractCard from "@/components/ActiveContractCard";
 import { contractTemplates } from "@/data/contractTemplates";
 
 const activeContracts = [
