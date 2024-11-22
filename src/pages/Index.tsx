@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Plus, Clock, FileText } from "lucide-react";
 import ContractTemplateCard from "@/components/ContractTemplateCard";
-import ActiveContractCard from "@/components/ActiveContractCard";
+import ContractSearch from "@/components/ContractSearch";
+import CategoryFilter from "@/components/CategoryFilter";
 import { contractTemplates } from "@/data/contractTemplates";
 
 const activeContracts = [
@@ -23,6 +25,19 @@ const activeContracts = [
 ];
 
 const Index = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+
+  const filteredTemplates = contractTemplates.filter((template) => {
+    const matchesSearch = 
+      template.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      template.description.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    const matchesCategory = selectedCategory === null || template.categoryId === selectedCategory;
+    
+    return matchesSearch && matchesCategory;
+  });
+
   return (
     <div className="min-h-screen bg-gray-50 py-8 animate-fade-in">
       <div className="container mx-auto px-4">
@@ -63,8 +78,13 @@ const Index = () => {
               <CardDescription>Start from pre-made professional templates</CardDescription>
             </CardHeader>
             <CardContent>
+              <ContractSearch onSearch={setSearchTerm} />
+              <CategoryFilter
+                selectedCategory={selectedCategory}
+                onSelectCategory={setSelectedCategory}
+              />
               <div className="space-y-4">
-                {contractTemplates.map((template) => (
+                {filteredTemplates.map((template) => (
                   <ContractTemplateCard key={template.id} template={template} />
                 ))}
               </div>

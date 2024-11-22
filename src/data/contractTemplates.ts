@@ -1,167 +1,196 @@
-export const contractTemplates = [
+export interface ContractTemplate {
+  id: number;
+  name: string;
+  description: string;
+  categoryId: number;
+  details: string[];
+  popular?: boolean;
+}
+
+export const contractTemplates: ContractTemplate[] = [
   {
     id: 1,
-    name: "Writing Contract",
-    description: "For content creation and copywriting projects",
+    name: "Freelance Writing Agreement",
+    description: "Professional agreement for freelance writing services",
+    categoryId: 1,
     details: [
-      "Project scope and word count specifications",
-      "Revision terms and deadlines",
-      "Copyright transfer and usage rights",
-      "Payment milestones"
-    ]
+      "Project scope and deliverables",
+      "Payment terms and schedule",
+      "Revision policy",
+      "Copyright transfer"
+    ],
+    popular: true
   },
   {
     id: 2,
-    name: "Graphic Design Contract",
-    description: "For design and visual content projects",
+    name: "Content Creation Contract",
+    description: "Comprehensive contract for content creation services",
+    categoryId: 1,
     details: [
-      "Project deliverables and formats",
-      "Revision rounds included",
-      "Design ownership rights",
-      "Payment structure"
+      "Content specifications",
+      "Delivery timeline",
+      "Usage rights",
+      "Payment terms"
     ]
   },
   {
     id: 3,
-    name: "Web Development",
-    description: "For software and web development projects",
+    name: "Copywriting Agreement",
+    description: "Agreement for professional copywriting services",
+    categoryId: 1,
     details: [
-      "Project scope and features",
-      "Technical specifications",
-      "Maintenance terms",
-      "Milestone payments"
+      "Project requirements",
+      "Revision terms",
+      "Delivery schedule",
+      "Rights and ownership"
     ]
   },
   {
     id: 4,
-    name: "Social Media Management",
-    description: "For social media content and strategy",
+    name: "Graphic Design Contract",
+    description: "Professional agreement for graphic design work",
+    categoryId: 2,
     details: [
-      "Content creation schedule",
-      "Performance reporting",
-      "Platform management",
-      "Engagement metrics"
-    ]
+      "Design specifications",
+      "Revision rounds",
+      "File delivery format",
+      "Usage rights"
+    ],
+    popular: true
   },
   {
     id: 5,
-    name: "Photography Contract",
-    description: "For photography sessions and events",
+    name: "Web Design Agreement",
+    description: "Contract for website design services",
+    categoryId: 2,
     details: [
-      "Event coverage details",
-      "Image delivery format",
-      "Usage rights",
-      "Payment terms"
+      "Design deliverables",
+      "Timeline and milestones",
+      "Technical requirements",
+      "Maintenance terms"
     ]
   },
   {
     id: 6,
-    name: "Consulting Agreement",
-    description: "For business consulting services",
+    name: "Software Development Contract",
+    description: "Comprehensive agreement for software development",
+    categoryId: 3,
     details: [
-      "Service scope",
-      "Deliverables",
-      "Confidentiality terms",
-      "Payment schedule"
-    ]
+      "Project scope",
+      "Technical specifications",
+      "Delivery milestones",
+      "Support terms"
+    ],
+    popular: true
   },
   {
     id: 7,
-    name: "Virtual Assistant",
-    description: "For virtual assistance services",
+    name: "Mobile App Development",
+    description: "Contract for mobile application development",
+    categoryId: 3,
     details: [
-      "Task specifications",
-      "Communication protocol",
-      "Availability hours",
-      "Payment terms"
+      "App specifications",
+      "Platform requirements",
+      "Testing procedures",
+      "Maintenance agreement"
     ]
   },
   {
     id: 8,
-    name: "Marketing Strategy Contract",
-    description: "For marketing strategy and campaign planning",
+    name: "Non-Disclosure Agreement",
+    description: "Standard NDA for business relationships",
+    categoryId: 4,
     details: [
-      "Campaign objectives and KPIs",
-      "Marketing channels and tactics",
-      "Budget allocation",
-      "Performance reporting"
-    ]
+      "Confidentiality terms",
+      "Duration of agreement",
+      "Permitted uses",
+      "Breach consequences"
+    ],
+    popular: true
   },
   {
     id: 9,
-    name: "Video Production Contract",
-    description: "For video creation and editing projects",
+    name: "Business Consulting Agreement",
+    description: "Contract for business consulting services",
+    categoryId: 5,
     details: [
-      "Project scope and deliverables",
-      "Video specifications",
-      "Editing rounds",
-      "Distribution rights"
+      "Consulting scope",
+      "Service delivery",
+      "Reporting requirements",
+      "Fee structure"
     ]
   },
   {
     id: 10,
-    name: "Content Creation Contract",
-    description: "For various content creation projects",
+    name: "Marketing Consultant Contract",
+    description: "Agreement for marketing consultation services",
+    categoryId: 5,
     details: [
-      "Content type and format",
-      "Publishing schedule",
-      "SEO requirements",
-      "Content ownership"
+      "Service scope",
+      "Deliverables",
+      "Performance metrics",
+      "Payment terms"
     ]
   },
   {
     id: 11,
-    name: "UI/UX Design Contract",
-    description: "For user interface and experience design projects",
+    name: "Full-Time Employment Contract",
+    description: "Standard employment agreement",
+    categoryId: 6,
     details: [
-      "Project scope and deliverables",
-      "User research requirements",
-      "Wireframe and prototype specifications",
-      "Usability testing terms"
+      "Job responsibilities",
+      "Compensation details",
+      "Benefits package",
+      "Work conditions"
     ]
   },
   {
     id: 12,
-    name: "Data Analysis Contract",
-    description: "For data analysis and visualization projects",
+    name: "Social Media Marketing Agreement",
+    description: "Contract for social media management",
+    categoryId: 7,
     details: [
-      "Data source specifications",
-      "Analysis methodology",
-      "Reporting requirements",
-      "Data security measures"
-    ]
+      "Platform management",
+      "Content creation",
+      "Posting schedule",
+      "Analytics reporting"
+    ],
+    popular: true
   },
   {
     id: 13,
-    name: "Voice-Over Contract",
-    description: "For voice acting and narration projects",
+    name: "Photography Service Contract",
+    description: "Agreement for professional photography services",
+    categoryId: 8,
     details: [
-      "Script requirements",
-      "Recording specifications",
+      "Session details",
+      "Deliverables",
       "Usage rights",
-      "Revision terms"
+      "Payment terms"
     ]
   },
   {
     id: 14,
-    name: "Translation Contract",
-    description: "For language translation services",
+    name: "Virtual Assistant Agreement",
+    description: "Contract for virtual assistance services",
+    categoryId: 8,
     details: [
-      "Language pairs",
-      "Content type specifications",
-      "Quality assurance process",
-      "Cultural adaptation terms"
+      "Service scope",
+      "Working hours",
+      "Communication terms",
+      "Confidentiality"
     ]
   },
   {
     id: 15,
-    name: "Project Management Contract",
-    description: "For freelance project management services",
+    name: "Event Planning Contract",
+    description: "Agreement for event planning services",
+    categoryId: 8,
     details: [
-      "Project coordination scope",
-      "Team management responsibilities",
-      "Reporting structure",
-      "Risk management terms"
+      "Event specifications",
+      "Timeline and deadlines",
+      "Budget management",
+      "Cancellation policy"
     ]
   }
 ];
