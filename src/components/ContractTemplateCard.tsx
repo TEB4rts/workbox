@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Download } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -10,6 +9,7 @@ interface ContractTemplateCardProps {
     name: string;
     description: string;
     details: string[];
+    content: string;
   };
 }
 
@@ -17,7 +17,17 @@ const ContractTemplateCard = ({ template }: ContractTemplateCardProps) => {
   const navigate = useNavigate();
 
   const handleDownloadPDF = () => {
-    toast.success("Preparing PDF download...");
+    // Create a Blob with the template content
+    const blob = new Blob([template.content], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${template.name.toLowerCase().replace(/\s+/g, '-')}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+    toast.success("Template downloaded successfully!");
   };
 
   const handleSelect = () => {

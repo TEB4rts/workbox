@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { FileDown, Bold, Italic, Underline, AlignLeft, AlignCenter, AlignRight } from "lucide-react";
+import { contractTemplates } from "@/data/contractTemplates";
 
 interface DocumentEditorProps {
   templateId: string;
@@ -13,18 +14,69 @@ interface DocumentEditorProps {
 const DocumentEditor = ({ templateId }: DocumentEditorProps) => {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
+  const [originalContent, setOriginalContent] = useState("");
+
+  useEffect(() => {
+    const template = contractTemplates.find(t => t.id === parseInt(templateId));
+    if (template) {
+      setTitle(template.name);
+      setContent(template.content);
+      setOriginalContent(template.content);
+    }
+  }, [templateId]);
 
   const handleSave = () => {
-    toast.success("Document saved successfully!");
+    // Save as draft in localStorage
+    localStorage.setItem(`draft-${templateId}`, JSON.stringify({ title, content }));
+    toast.success("Document saved as draft!");
   };
 
   const handleDownload = () => {
-    toast.success("Preparing document for download...");
-    // Implementation for document download would go here
+    // Create a Blob with the content
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${title.toLowerCase().replace(/\s+/g, '-')}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+    toast.success("Document downloaded successfully!");
+  };
+
+  const handleReset = () => {
+    setContent(originalContent);
+    toast.success("Content reset to original template");
   };
 
   const applyFormatting = (format: string) => {
-    // Implementation for text formatting would go here
+    // Basic text formatting implementation
+    const textarea = document.querySelector('textarea');
+    if (!textarea) return;
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const selectedText = content.substring(start, end);
+    let newText = '';
+
+    switch (format) {
+      case 'bold':
+        newText = `**${selectedText}**`;
+        break;
+      case 'italic':
+        newText = `*${selectedText}*`;
+        break;
+      case 'underline':
+        newText = `_${selectedText}_`;
+        break;
+      default:
+        return;
+    }
+
+    setContent(
+      content.substring(0, start) + newText + content.substring(end)
+    );
     toast.success(`Applied ${format} formatting`);
   };
 
@@ -65,11 +117,14 @@ const DocumentEditor = ({ templateId }: DocumentEditorProps) => {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             placeholder="Start typing your document..."
-            className="min-h-[500px] resize-none"
+            className="min-h-[500px] resize-none font-mono"
           />
         </div>
 
         <div className="flex justify-end gap-4 mt-6">
+          <Button variant="outline" onClick={handleReset}>
+            Reset to Original
+          </Button>
           <Button variant="outline" onClick={handleSave}>
             Save Draft
           </Button>

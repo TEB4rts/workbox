@@ -4,8 +4,40 @@ export interface ContractTemplate {
   description: string;
   categoryId: number;
   details: string[];
+  content: string;
   popular?: boolean;
 }
+
+// Sample template content - You can expand this with more templates
+const defaultContent = `[Contract Title]
+
+THIS AGREEMENT is made on [Date] between:
+
+[Your Company Name]
+[Your Address]
+(hereinafter referred to as the "Service Provider")
+
+AND
+
+[Client Name]
+[Client Address]
+(hereinafter referred to as the "Client")
+
+1. SERVICES
+The Service Provider agrees to provide the following services to the Client:
+[Detailed description of services]
+
+2. PAYMENT
+The Client agrees to pay the Service Provider:
+[Payment terms and conditions]
+
+3. TERM
+This agreement will commence on [Start Date] and continue until [End Date]
+
+4. CONFIDENTIALITY
+Both parties agree to maintain the confidentiality of any proprietary information...
+
+[Continue with standard contract terms]`;
 
 export const contractTemplates: ContractTemplate[] = [
   {
@@ -19,7 +51,8 @@ export const contractTemplates: ContractTemplate[] = [
       "Revision policy",
       "Copyright transfer"
     ],
-    popular: true
+    popular: true,
+    content: defaultContent
   },
   {
     id: 2,
@@ -31,7 +64,8 @@ export const contractTemplates: ContractTemplate[] = [
       "Delivery timeline",
       "Usage rights",
       "Payment terms"
-    ]
+    ],
+    content: defaultContent
   },
   {
     id: 3,
@@ -43,7 +77,8 @@ export const contractTemplates: ContractTemplate[] = [
       "Revision terms",
       "Delivery schedule",
       "Rights and ownership"
-    ]
+    ],
+    content: defaultContent
   },
   {
     id: 4,
@@ -56,7 +91,8 @@ export const contractTemplates: ContractTemplate[] = [
       "File delivery format",
       "Usage rights"
     ],
-    popular: true
+    popular: true,
+    content: defaultContent
   },
   {
     id: 5,
@@ -68,7 +104,8 @@ export const contractTemplates: ContractTemplate[] = [
       "Timeline and milestones",
       "Technical requirements",
       "Maintenance terms"
-    ]
+    ],
+    content: defaultContent
   },
   {
     id: 6,
@@ -81,7 +118,8 @@ export const contractTemplates: ContractTemplate[] = [
       "Delivery milestones",
       "Support terms"
     ],
-    popular: true
+    popular: true,
+    content: defaultContent
   },
   {
     id: 7,
@@ -93,7 +131,8 @@ export const contractTemplates: ContractTemplate[] = [
       "Platform requirements",
       "Testing procedures",
       "Maintenance agreement"
-    ]
+    ],
+    content: defaultContent
   },
   {
     id: 8,
@@ -106,7 +145,8 @@ export const contractTemplates: ContractTemplate[] = [
       "Permitted uses",
       "Breach consequences"
     ],
-    popular: true
+    popular: true,
+    content: defaultContent
   },
   {
     id: 9,
@@ -118,7 +158,8 @@ export const contractTemplates: ContractTemplate[] = [
       "Service delivery",
       "Reporting requirements",
       "Fee structure"
-    ]
+    ],
+    content: defaultContent
   },
   {
     id: 10,
@@ -130,7 +171,8 @@ export const contractTemplates: ContractTemplate[] = [
       "Deliverables",
       "Performance metrics",
       "Payment terms"
-    ]
+    ],
+    content: defaultContent
   },
   {
     id: 11,
@@ -142,7 +184,8 @@ export const contractTemplates: ContractTemplate[] = [
       "Compensation details",
       "Benefits package",
       "Work conditions"
-    ]
+    ],
+    content: defaultContent
   },
   {
     id: 12,
@@ -155,7 +198,8 @@ export const contractTemplates: ContractTemplate[] = [
       "Posting schedule",
       "Analytics reporting"
     ],
-    popular: true
+    popular: true,
+    content: defaultContent
   },
   {
     id: 13,
@@ -167,7 +211,8 @@ export const contractTemplates: ContractTemplate[] = [
       "Deliverables",
       "Usage rights",
       "Payment terms"
-    ]
+    ],
+    content: defaultContent
   },
   {
     id: 14,
@@ -179,7 +224,8 @@ export const contractTemplates: ContractTemplate[] = [
       "Working hours",
       "Communication terms",
       "Confidentiality"
-    ]
+    ],
+    content: defaultContent
   },
   {
     id: 15,
@@ -191,6 +237,7 @@ export const contractTemplates: ContractTemplate[] = [
       "Timeline and deadlines",
       "Budget management",
       "Cancellation policy"
-    ]
+    ],
+    content: defaultContent
   }
 ];
