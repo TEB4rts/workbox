@@ -94,7 +94,35 @@ Freelancer: _____________ Date: _______`
       "Content ownership"
     ],
     logoPlaceholder: "https://images.unsplash.com/photo-1455390582262-044cdead277a",
-    content: `[Blog Writing Service Agreement]`
+    content: `BLOG WRITING SERVICE AGREEMENT
+
+1. PARTIES
+[Similar structure to Content Creation Agreement]
+
+2. BLOG CONTENT SPECIFICATIONS
+
+- Number of Blog Posts: [Number]
+- Word Count per Post: [Count]
+- Topics: [Topics]
+- Keywords per Post: [Number]
+- Meta Descriptions: [Yes/No]
+
+3. SEO REQUIREMENTS
+
+- Target Keywords: [Keywords]
+- Heading Structure: [H1, H2, H3 requirements]
+- Internal/External Links: [Requirements]
+- Image Alt Text: [Requirements]
+
+4. CONTENT OWNERSHIP AND RIGHTS
+
+[Detailed ownership terms]
+
+5. PAYMENT AND DELIVERY SCHEDULE
+
+[Payment and delivery terms]
+
+[Remaining sections follow similar structure to main template]`
   },
   {
     id: 3,
@@ -108,6 +136,30 @@ Freelancer: _____________ Date: _______`
       "Brand voice guidelines"
     ],
     logoPlaceholder: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
-    content: `[Social Media Content Agreement]`
+    content: `SOCIAL MEDIA CONTENT AGREEMENT
+
+1. PLATFORMS AND CONTENT TYPES
+
+Platforms Covered:
+- [Platform 1]
+- [Platform 2]
+
+Content Types:
+- Posts: [Number per week/month]
+- Stories: [Number per week/month]
+- Reels/Videos: [Number per week/month]
+
+2. CONTENT GUIDELINES
+
+Brand Voice: [Description]
+Visual Guidelines: [Requirements]
+Hashtag Strategy: [Details]
+
+3. PERFORMANCE METRICS
+
+Target Engagement Rate: [Rate]
+Reporting Schedule: [Schedule]
+
+[Remaining sections follow similar structure to main template]`
   }
 ];

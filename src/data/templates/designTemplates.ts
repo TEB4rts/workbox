@@ -14,7 +14,30 @@ export const designTemplates: ContractTemplate[] = [
     ],
     popular: true,
     logoPlaceholder: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-    content: `// ... keep existing code (contract content)`
+    content: `GRAPHIC DESIGN SERVICE AGREEMENT
+
+1. PROJECT SCOPE
+
+Design Deliverables:
+- [List of design items]
+- File Formats: [Formats]
+- Dimensions: [Specifications]
+
+2. DESIGN PROCESS
+
+- Initial Concepts: [Number]
+- Revision Rounds: [Number]
+- Final Deliverables: [List]
+
+3. BRAND GUIDELINES
+
+[Brand specifications]
+
+4. USAGE RIGHTS AND LICENSING
+
+[Detailed rights and licensing terms]
+
+[Remaining sections follow similar structure to main template]`
   },
   {
     id: 202,
@@ -28,7 +51,25 @@ export const designTemplates: ContractTemplate[] = [
       "Testing requirements"
     ],
     logoPlaceholder: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8",
-    content: `[UI/UX Design Service Agreement]`
+    content: `UI/UX DESIGN SERVICE AGREEMENT
+
+1. DESIGN DELIVERABLES
+
+- Wireframes
+- User Flows
+- Interactive Prototypes
+- Design Systems
+- Asset Libraries
+
+2. RESEARCH AND TESTING
+
+User Research Requirements:
+[Details]
+
+Usability Testing:
+[Requirements]
+
+[Remaining sections follow similar structure to main template]`
   },
   {
     id: 203,
@@ -42,6 +83,20 @@ export const designTemplates: ContractTemplate[] = [
       "Typography selection"
     ],
     logoPlaceholder: "https://images.unsplash.com/photo-1512295767273-ac109ac3acfa",
-    content: `[Brand Identity Design Agreement]`
+    content: `BRAND IDENTITY DESIGN AGREEMENT
+
+1. BRAND PACKAGE DELIVERABLES
+
+- Logo Design (variants)
+- Color Palette
+- Typography
+- Brand Guidelines
+- Application Examples
+
+2. USAGE AND RIGHTS
+
+[Detailed usage terms]
+
+[Remaining sections follow similar structure to main template]`
   }
 ];
