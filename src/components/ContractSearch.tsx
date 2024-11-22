@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
-import { ContractTemplate } from "@/data/contractTemplates";
+import { ContractTemplate } from "@/data/types";  // Updated import to use types.ts
+import { contractTemplates } from "@/data/contractTemplates";  // Keep this import
 
 interface ContractSearchProps {
   onSearch: (searchTerm: string) => void;
