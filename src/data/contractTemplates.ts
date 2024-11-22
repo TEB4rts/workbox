@@ -108,5 +108,60 @@ export const contractTemplates = [
       "SEO requirements",
       "Content ownership"
     ]
+  },
+  {
+    id: 11,
+    name: "UI/UX Design Contract",
+    description: "For user interface and experience design projects",
+    details: [
+      "Project scope and deliverables",
+      "User research requirements",
+      "Wireframe and prototype specifications",
+      "Usability testing terms"
+    ]
+  },
+  {
+    id: 12,
+    name: "Data Analysis Contract",
+    description: "For data analysis and visualization projects",
+    details: [
+      "Data source specifications",
+      "Analysis methodology",
+      "Reporting requirements",
+      "Data security measures"
+    ]
+  },
+  {
+    id: 13,
+    name: "Voice-Over Contract",
+    description: "For voice acting and narration projects",
+    details: [
+      "Script requirements",
+      "Recording specifications",
+      "Usage rights",
+      "Revision terms"
+    ]
+  },
+  {
+    id: 14,
+    name: "Translation Contract",
+    description: "For language translation services",
+    details: [
+      "Language pairs",
+      "Content type specifications",
+      "Quality assurance process",
+      "Cultural adaptation terms"
+    ]
+  },
+  {
+    id: 15,
+    name: "Project Management Contract",
+    description: "For freelance project management services",
+    details: [
+      "Project coordination scope",
+      "Team management responsibilities",
+      "Reporting structure",
+      "Risk management terms"
+    ]
   }
 ];
