@@ -20,6 +20,10 @@ import ImageEditor from "./pages/tools/ImageEditor";
 import QRGenerator from "./pages/tools/QRGenerator";
 import UnitConverter from "./pages/tools/UnitConverter";
 import ColorPicker from "./pages/tools/ColorPicker";
+import TodoListBuilder from "./pages/tools/TodoListBuilder";
+import GrammarChecker from "./pages/tools/GrammarChecker";
+import PlagiarismChecker from "./pages/tools/PlagiarismChecker";
+import ProposalCustomizer from "./pages/tools/ProposalCustomizer";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +51,10 @@ const App = () => (
           <Route path="/tools/qr-generator" element={<QRGenerator />} />
           <Route path="/tools/unit-converter" element={<UnitConverter />} />
           <Route path="/tools/color-picker" element={<ColorPicker />} />
+          <Route path="/tools/todo-list" element={<TodoListBuilder />} />
+          <Route path="/tools/grammar-checker" element={<GrammarChecker />} />
+          <Route path="/tools/plagiarism-checker" element={<PlagiarismChecker />} />
+          <Route path="/tools/proposal-customizer" element={<ProposalCustomizer />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

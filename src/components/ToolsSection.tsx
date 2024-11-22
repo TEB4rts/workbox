@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calculator, Calendar, Clock, FileText, PenTool, Timer, FileImage, Edit, FileSpreadsheet, QrCode, Languages, Palette } from "lucide-react";
+import { Calculator, Calendar, Clock, FileText, PenTool, Timer, FileImage, Edit, FileSpreadsheet, QrCode, Languages, Palette, ListTodo, SpellCheck, Copy, Shield } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const ToolsSection = () => {
@@ -78,6 +78,30 @@ const ToolsSection = () => {
       title: "Color Picker",
       description: "Pick and convert color formats",
       path: "/tools/color-picker"
+    },
+    {
+      icon: <ListTodo className="h-6 w-6" />,
+      title: "Todo List Builder",
+      description: "Create and manage project tasks",
+      path: "/tools/todo-list"
+    },
+    {
+      icon: <SpellCheck className="h-6 w-6" />,
+      title: "Grammar Checker",
+      description: "Check spelling and grammar",
+      path: "/tools/grammar-checker"
+    },
+    {
+      icon: <Copy className="h-6 w-6" />,
+      title: "Plagiarism Checker",
+      description: "Check content originality",
+      path: "/tools/plagiarism-checker"
+    },
+    {
+      icon: <Shield className="h-6 w-6" />,
+      title: "Proposal Customizer",
+      description: "Customize proposal templates",
+      path: "/tools/proposal-customizer"
     }
   ];
 
