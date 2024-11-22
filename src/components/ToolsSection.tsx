@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calculator, Calendar, Clock, FileText, PenTool, Timer } from "lucide-react";
+import { Calculator, Calendar, Clock, FileText, PenTool, Timer, FileImage, Edit, FileSpreadsheet, QrCode, Languages, Palette } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const ToolsSection = () => {
@@ -42,6 +42,42 @@ const ToolsSection = () => {
       title: "Scope Builder",
       description: "Create detailed project scope documents",
       path: "/tools/scope-builder"
+    },
+    {
+      icon: <FileImage className="h-6 w-6" />,
+      title: "File Converter",
+      description: "Convert files between different formats",
+      path: "/tools/file-converter"
+    },
+    {
+      icon: <Edit className="h-6 w-6" />,
+      title: "Image Editor",
+      description: "Edit and resize images online",
+      path: "/tools/image-editor"
+    },
+    {
+      icon: <FileSpreadsheet className="h-6 w-6" />,
+      title: "Word Counter",
+      description: "Count words and characters in your text",
+      path: "/tools/word-counter"
+    },
+    {
+      icon: <QrCode className="h-6 w-6" />,
+      title: "QR Generator",
+      description: "Generate QR codes for any content",
+      path: "/tools/qr-generator"
+    },
+    {
+      icon: <Languages className="h-6 w-6" />,
+      title: "Unit Converter",
+      description: "Convert between different units",
+      path: "/tools/unit-converter"
+    },
+    {
+      icon: <Palette className="h-6 w-6" />,
+      title: "Color Picker",
+      description: "Pick and convert color formats",
+      path: "/tools/color-picker"
     }
   ];
 

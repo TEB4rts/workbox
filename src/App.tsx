@@ -14,6 +14,7 @@ import Timeline from "./pages/tools/Timeline";
 import DeadlineCalculator from "./pages/tools/DeadlineCalculator";
 import AgreementGenerator from "./pages/tools/AgreementGenerator";
 import ScopeBuilder from "./pages/tools/ScopeBuilder";
+import WordCounter from "./pages/tools/WordCounter";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/tools/deadline-calculator" element={<DeadlineCalculator />} />
           <Route path="/tools/agreement-generator" element={<AgreementGenerator />} />
           <Route path="/tools/scope-builder" element={<ScopeBuilder />} />
+          <Route path="/tools/word-counter" element={<WordCounter />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
