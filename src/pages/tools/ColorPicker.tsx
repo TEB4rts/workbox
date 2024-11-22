@@ -3,13 +3,19 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ArrowLeft, Palette, Copy } from "lucide-react";
+import { ArrowLeft, Palette, Copy, Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 const ColorPicker = () => {
   const navigate = useNavigate();
-  const [color, setColor] = useState("#6D28D9"); // Default color (primary)
+  const [color, setColor] = useState("#6D28D9");
+  const [showPalette, setShowPalette] = useState(false);
+
+  const predefinedColors = [
+    "#EF4444", "#F59E0B", "#10B981", "#3B82F6", "#8B5CF6", "#EC4899",
+    "#6EE7B7", "#93C5FD", "#C084FC", "#F472B6", "#FCD34D", "#6B7280"
+  ];
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -26,8 +32,39 @@ const ColorPicker = () => {
     } : null;
   };
 
+  // Convert RGB to HSL
+  const rgbToHsl = (r: number, g: number, b: number) => {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h = 0, s, l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0;
+    } else {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+
+    return {
+      h: Math.round(h * 360),
+      s: Math.round(s * 100),
+      l: Math.round(l * 100)
+    };
+  };
+
   const rgb = hexToRgb(color);
   const rgbString = rgb ? `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})` : "";
+  const hsl = rgb ? rgbToHsl(rgb.r, rgb.g, rgb.b) : null;
+  const hslString = hsl ? `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)` : "";
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -55,9 +92,24 @@ const ColorPicker = () => {
           <CardContent className="space-y-6">
             <div className="space-y-4">
               <div 
-                className="w-full h-32 rounded-lg border"
+                className="w-full h-32 rounded-lg border cursor-pointer transition-all hover:shadow-lg"
                 style={{ backgroundColor: color }}
+                onClick={() => setShowPalette(!showPalette)}
               />
+              
+              {showPalette && (
+                <div className="grid grid-cols-6 gap-2 p-4 bg-white rounded-lg shadow-lg border animate-fade-in">
+                  {predefinedColors.map((c) => (
+                    <div
+                      key={c}
+                      className="w-8 h-8 rounded-full cursor-pointer hover:scale-110 transition-transform"
+                      style={{ backgroundColor: c }}
+                      onClick={() => setColor(c)}
+                    />
+                  ))}
+                </div>
+              )}
+
               <div className="space-y-2">
                 <Label htmlFor="colorPicker">Select Color</Label>
                 <Input
@@ -92,6 +144,19 @@ const ColorPicker = () => {
                     variant="outline"
                     size="icon"
                     onClick={() => copyToClipboard(rgbString)}
+                  >
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label>HSL</Label>
+                <div className="flex gap-2">
+                  <Input value={hslString} readOnly />
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => copyToClipboard(hslString)}
                   >
                     <Copy className="h-4 w-4" />
                   </Button>
