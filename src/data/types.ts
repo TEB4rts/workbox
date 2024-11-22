@@ -17,3 +17,34 @@ export interface ContractTemplate {
     revisions?: number;
   };
 }
+
+export interface ProposalTemplate {
+  id: number;
+  name: string;
+  description: string;
+  type: 'content' | 'design' | 'development';
+  sections: {
+    projectOverview: string;
+    scopeOfWork: string;
+    deliverables: string[];
+    pricing: {
+      type: 'hourly' | 'fixed';
+      rate?: number;
+      fixedAmount?: number;
+    };
+    timeline: {
+      startDate?: string;
+      endDate?: string;
+      milestones: Array<{
+        description: string;
+        date: string;
+      }>;
+    };
+    paymentTerms: string;
+  };
+  customization: {
+    color?: string;
+    font?: string;
+    logo?: string;
+  };
+}
