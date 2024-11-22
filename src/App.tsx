@@ -15,6 +15,11 @@ import DeadlineCalculator from "./pages/tools/DeadlineCalculator";
 import AgreementGenerator from "./pages/tools/AgreementGenerator";
 import ScopeBuilder from "./pages/tools/ScopeBuilder";
 import WordCounter from "./pages/tools/WordCounter";
+import FileConverter from "./pages/tools/FileConverter";
+import ImageEditor from "./pages/tools/ImageEditor";
+import QRGenerator from "./pages/tools/QRGenerator";
+import UnitConverter from "./pages/tools/UnitConverter";
+import ColorPicker from "./pages/tools/ColorPicker";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +42,11 @@ const App = () => (
           <Route path="/tools/agreement-generator" element={<AgreementGenerator />} />
           <Route path="/tools/scope-builder" element={<ScopeBuilder />} />
           <Route path="/tools/word-counter" element={<WordCounter />} />
+          <Route path="/tools/file-converter" element={<FileConverter />} />
+          <Route path="/tools/image-editor" element={<ImageEditor />} />
+          <Route path="/tools/qr-generator" element={<QRGenerator />} />
+          <Route path="/tools/unit-converter" element={<UnitConverter />} />
+          <Route path="/tools/color-picker" element={<ColorPicker />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
