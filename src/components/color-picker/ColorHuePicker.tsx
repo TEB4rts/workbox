@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Copy } from "lucide-react";
+import { Copy, Info } from "lucide-react";
 import { toast } from "sonner";
 
 interface ColorHuePickerProps {
@@ -17,6 +17,31 @@ interface ColorHuePickerProps {
   onLightnessChange: (value: number) => void;
 }
 
+const getColorName = (hue: number, saturation: number, lightness: number) => {
+  // Basic color name detection based on HSL values
+  if (lightness < 20) return "Dark";
+  if (lightness > 80) return "Light";
+  
+  if (saturation < 20) return "Gray";
+  
+  const hueNames: Record<number, string> = {
+    0: "Red",
+    30: "Orange",
+    60: "Yellow",
+    120: "Green",
+    180: "Cyan",
+    240: "Blue",
+    300: "Purple",
+    360: "Red"
+  };
+  
+  const closestHue = Object.keys(hueNames).reduce((prev, curr) => {
+    return Math.abs(hue - Number(curr)) < Math.abs(hue - Number(prev)) ? curr : prev;
+  });
+  
+  return hueNames[Number(closestHue)];
+};
+
 export const ColorHuePicker = ({
   color,
   hue,
@@ -26,6 +51,8 @@ export const ColorHuePicker = ({
   onSaturationChange,
   onLightnessChange,
 }: ColorHuePickerProps) => {
+  const colorName = getColorName(hue, saturation, lightness);
+  
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     toast.success("Color code copied to clipboard!");
@@ -34,10 +61,20 @@ export const ColorHuePicker = ({
   return (
     <Card>
       <CardContent className="space-y-4 p-6">
-        <div
-          className="w-full h-32 rounded-lg border cursor-pointer transition-all hover:shadow-lg"
-          style={{ backgroundColor: color }}
-        />
+        <div className="space-y-2">
+          <div
+            className="w-full h-32 rounded-lg border cursor-pointer transition-all hover:shadow-lg relative group"
+            style={{ backgroundColor: color }}
+          >
+            <div className="absolute inset-0 bg-black/60 text-white p-4 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg">
+              <div className="flex items-center gap-2">
+                <Info className="h-4 w-4" />
+                <span>{colorName}</span>
+              </div>
+              <div className="mt-2">HSL: {hue}°, {saturation}%, {lightness}%</div>
+            </div>
+          </div>
+        </div>
         
         <div className="space-y-4">
           <div className="space-y-2">
