@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import QRCode from "qrcode";
 import { Html5QrcodeScanner } from "html5-qrcode";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 
 const QRGenerator = () => {
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ const QRGenerator = () => {
         },
         fps: 5,
       },
-      false // verbose flag
+      false
     );
 
     scanner.render(success, error);
@@ -72,12 +73,30 @@ const QRGenerator = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-8">
       <div className="container mx-auto px-4">
+        <div className="mb-6">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/#tools">Tools</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>QR Generator</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+
         <Button 
           variant="outline" 
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/#tools')}
           className="mb-6"
         >
-          <ArrowLeft className="mr-2 h-4 w-4" /> Back to Dashboard
+          <ArrowLeft className="mr-2 h-4 w-4" /> Back to Tools
         </Button>
 
         <Card className="max-w-4xl mx-auto">
