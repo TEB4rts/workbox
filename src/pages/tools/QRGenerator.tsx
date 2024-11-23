@@ -44,13 +44,17 @@ const QRGenerator = () => {
   };
 
   const startScanner = () => {
-    const scanner = new Html5QrcodeScanner("reader", {
-      qrbox: {
-        width: 250,
-        height: 250,
+    const scanner = new Html5QrcodeScanner(
+      "reader",
+      { 
+        qrbox: {
+          width: 250,
+          height: 250,
+        },
+        fps: 5,
       },
-      fps: 5,
-    });
+      false // verbose flag
+    );
 
     scanner.render(success, error);
 
