@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { QrCode, ArrowLeft } from "lucide-react";
-import { createCanvas } from '@napi-rs/canvas';
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import QRCode from "qrcode";
 
 const QRGenerator = () => {
   const navigate = useNavigate();
@@ -19,19 +19,8 @@ const QRGenerator = () => {
     }
 
     try {
-      const canvas = createCanvas(200, 200);
-      const ctx = canvas.getContext('2d');
-      
-      // Simple QR code visualization
-      ctx.fillStyle = 'white';
-      ctx.fillRect(0, 0, 200, 200);
-      ctx.fillStyle = 'black';
-      ctx.font = '16px Arial';
-      ctx.fillText('QR Code for:', 10, 20);
-      ctx.fillText(text, 10, 40);
-      
-      const dataUrl = canvas.toDataURL();
-      setQrCode(dataUrl);
+      const url = await QRCode.toDataURL(text);
+      setQrCode(url);
       toast.success("QR code generated successfully");
     } catch (error) {
       toast.error("Failed to generate QR code");
