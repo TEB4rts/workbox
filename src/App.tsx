@@ -24,6 +24,7 @@ import TodoListBuilder from "./pages/tools/TodoListBuilder";
 import GrammarChecker from "./pages/tools/GrammarChecker";
 import PlagiarismChecker from "./pages/tools/PlagiarismChecker";
 import ProposalCustomizer from "./pages/tools/ProposalCustomizer";
+import FontTool from "./pages/tools/FontTool";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => (
           <Route path="/tools/grammar-checker" element={<GrammarChecker />} />
           <Route path="/tools/plagiarism-checker" element={<PlagiarismChecker />} />
           <Route path="/tools/proposal-customizer" element={<ProposalCustomizer />} />
+          <Route path="/tools/font-tool" element={<FontTool />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

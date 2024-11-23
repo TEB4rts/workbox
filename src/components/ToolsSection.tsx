@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calculator, Calendar, Clock, FileText, PenTool, Timer, FileImage, Edit, FileSpreadsheet, QrCode, Languages, Palette, ListTodo, SpellCheck, Copy, Shield } from "lucide-react";
+import { Calculator, Calendar, Clock, FileText, PenTool, Timer, FileImage, Edit, FileSpreadsheet, QrCode, Languages, Palette, ListTodo, SpellCheck, Copy, Shield, Type } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const ToolsSection = () => {
@@ -102,6 +102,12 @@ const ToolsSection = () => {
       title: "Proposal Customizer",
       description: "Customize proposal templates",
       path: "/tools/proposal-customizer"
+    },
+    {
+      icon: <Type className="h-6 w-6" />,
+      title: "Font Tool",
+      description: "Browse and download fonts",
+      path: "/tools/font-tool"
     }
   ];
 
