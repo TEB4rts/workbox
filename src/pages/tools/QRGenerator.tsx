@@ -2,16 +2,19 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { QrCode, ArrowLeft } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { QrCode, ArrowLeft, Upload, Scan } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import QRCode from "qrcode";
+import { Html5QrcodeScanner } from "html5-qrcode";
 
 const QRGenerator = () => {
   const navigate = useNavigate();
   const [text, setText] = useState("");
   const [qrCode, setQrCode] = useState<string>("");
-
+  const [scanResult, setScanResult] = useState("");
+  
   const generateQR = async () => {
     if (!text) {
       toast.error("Please enter some text");
@@ -40,8 +43,30 @@ const QRGenerator = () => {
     toast.success("QR code downloaded");
   };
 
+  const startScanner = () => {
+    const scanner = new Html5QrcodeScanner("reader", {
+      qrbox: {
+        width: 250,
+        height: 250,
+      },
+      fps: 5,
+    });
+
+    scanner.render(success, error);
+
+    function success(result: string) {
+      scanner.clear();
+      setScanResult(result);
+      toast.success("QR Code scanned successfully!");
+    }
+
+    function error(err: any) {
+      console.warn(err);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-8">
       <div className="container mx-auto px-4">
         <Button 
           variant="outline" 
@@ -58,32 +83,61 @@ const QRGenerator = () => {
                 <QrCode className="h-6 w-6" />
               </div>
               <div>
-                <CardTitle>QR Code Generator</CardTitle>
+                <CardTitle>QR Code Tool</CardTitle>
               </div>
             </div>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Input
-                placeholder="Enter text or URL..."
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-              />
-              <Button onClick={generateQR} className="w-full">
-                Generate QR Code
-              </Button>
-            </div>
+          <CardContent>
+            <Tabs defaultValue="generate" className="space-y-6">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="generate">Generate QR Code</TabsTrigger>
+                <TabsTrigger value="scan">Scan QR Code</TabsTrigger>
+              </TabsList>
 
-            {qrCode && (
-              <div className="space-y-4">
-                <div className="flex justify-center">
-                  <img src={qrCode} alt="Generated QR Code" className="max-w-[200px]" />
+              <TabsContent value="generate" className="space-y-4">
+                <div className="space-y-2">
+                  <Input
+                    placeholder="Enter text or URL..."
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                  />
+                  <Button onClick={generateQR} className="w-full">
+                    <QrCode className="mr-2 h-4 w-4" />
+                    Generate QR Code
+                  </Button>
                 </div>
-                <Button onClick={downloadQR} variant="outline" className="w-full">
-                  Download QR Code
-                </Button>
-              </div>
-            )}
+
+                {qrCode && (
+                  <div className="space-y-4">
+                    <div className="flex justify-center p-6 bg-white rounded-lg shadow-sm">
+                      <img src={qrCode} alt="Generated QR Code" className="max-w-[200px]" />
+                    </div>
+                    <Button onClick={downloadQR} variant="outline" className="w-full">
+                      <Upload className="mr-2 h-4 w-4" />
+                      Download QR Code
+                    </Button>
+                  </div>
+                )}
+              </TabsContent>
+
+              <TabsContent value="scan" className="space-y-4">
+                <div className="space-y-4">
+                  <Button onClick={startScanner} className="w-full">
+                    <Scan className="mr-2 h-4 w-4" />
+                    Start Scanner
+                  </Button>
+                  
+                  <div id="reader" className="w-full"></div>
+                  
+                  {scanResult && (
+                    <div className="p-4 bg-white rounded-lg shadow-sm">
+                      <h3 className="font-semibold mb-2">Scan Result:</h3>
+                      <p className="break-all">{scanResult}</p>
+                    </div>
+                  )}
+                </div>
+              </TabsContent>
+            </Tabs>
           </CardContent>
         </Card>
       </div>

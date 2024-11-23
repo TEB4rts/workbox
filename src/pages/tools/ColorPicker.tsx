@@ -3,13 +3,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ArrowLeft, Palette, Copy, Check } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
+import { ArrowLeft, Palette, Copy } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 const ColorPicker = () => {
   const navigate = useNavigate();
   const [color, setColor] = useState("#6D28D9");
+  const [hue, setHue] = useState(0);
+  const [saturation, setSaturation] = useState(100);
+  const [lightness, setLightness] = useState(50);
   const [showPalette, setShowPalette] = useState(false);
 
   const predefinedColors = [
@@ -17,12 +21,25 @@ const ColorPicker = () => {
     "#6EE7B7", "#93C5FD", "#C084FC", "#F472B6", "#FCD34D", "#6B7280"
   ];
 
+  const generateColorPalette = (baseColor: string) => {
+    const rgb = hexToRgb(baseColor);
+    if (!rgb) return [];
+    
+    const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+    return [
+      hslToHex(hsl.h, hsl.s, 90), // Lightest
+      hslToHex(hsl.h, hsl.s, 70),
+      hslToHex(hsl.h, hsl.s, 50), // Base
+      hslToHex(hsl.h, hsl.s, 30),
+      hslToHex(hsl.h, hsl.s, 10), // Darkest
+    ];
+  };
+
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     toast.success("Color code copied to clipboard!");
   };
 
-  // Convert hex to RGB
   const hexToRgb = (hex: string) => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? {
@@ -32,7 +49,6 @@ const ColorPicker = () => {
     } : null;
   };
 
-  // Convert RGB to HSL
   const rgbToHsl = (r: number, g: number, b: number) => {
     r /= 255;
     g /= 255;
@@ -61,13 +77,26 @@ const ColorPicker = () => {
     };
   };
 
-  const rgb = hexToRgb(color);
-  const rgbString = rgb ? `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})` : "";
-  const hsl = rgb ? rgbToHsl(rgb.r, rgb.g, rgb.b) : null;
-  const hslString = hsl ? `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)` : "";
+  const hslToHex = (h: number, s: number, l: number) => {
+    l /= 100;
+    const a = s * Math.min(l, 1 - l) / 100;
+    const f = (n: number) => {
+      const k = (n + h / 30) % 12;
+      const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+      return Math.round(255 * color).toString(16).padStart(2, '0');
+    };
+    return `#${f(0)}${f(8)}${f(4)}`;
+  };
+
+  const updateHSL = () => {
+    const newColor = hslToHex(hue, saturation, lightness);
+    setColor(newColor);
+  };
+
+  const colorPalette = generateColorPalette(color);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-8">
       <div className="container mx-auto px-4">
         <Button 
           variant="outline" 
@@ -97,6 +126,61 @@ const ColorPicker = () => {
                 onClick={() => setShowPalette(!showPalette)}
               />
               
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Label>Hue</Label>
+                  <Slider
+                    value={[hue]}
+                    min={0}
+                    max={360}
+                    step={1}
+                    onValueChange={(value) => {
+                      setHue(value[0]);
+                      updateHSL();
+                    }}
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label>Saturation</Label>
+                  <Slider
+                    value={[saturation]}
+                    min={0}
+                    max={100}
+                    step={1}
+                    onValueChange={(value) => {
+                      setSaturation(value[0]);
+                      updateHSL();
+                    }}
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label>Lightness</Label>
+                  <Slider
+                    value={[lightness]}
+                    min={0}
+                    max={100}
+                    step={1}
+                    onValueChange={(value) => {
+                      setLightness(value[0]);
+                      updateHSL();
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-5 gap-2">
+                {colorPalette.map((c, index) => (
+                  <div
+                    key={index}
+                    className="aspect-square rounded-lg cursor-pointer hover:scale-105 transition-transform"
+                    style={{ backgroundColor: c }}
+                    onClick={() => setColor(c)}
+                  />
+                ))}
+              </div>
+
               {showPalette && (
                 <div className="grid grid-cols-6 gap-2 p-4 bg-white rounded-lg shadow-lg border animate-fade-in">
                   {predefinedColors.map((c) => (
@@ -109,17 +193,6 @@ const ColorPicker = () => {
                   ))}
                 </div>
               )}
-
-              <div className="space-y-2">
-                <Label htmlFor="colorPicker">Select Color</Label>
-                <Input
-                  id="colorPicker"
-                  type="color"
-                  value={color}
-                  onChange={(e) => setColor(e.target.value)}
-                  className="h-12 w-full"
-                />
-              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -137,26 +210,13 @@ const ColorPicker = () => {
                 </div>
               </div>
               <div className="space-y-2">
-                <Label>RGB</Label>
-                <div className="flex gap-2">
-                  <Input value={rgbString} readOnly />
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={() => copyToClipboard(rgbString)}
-                  >
-                    <Copy className="h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-              <div className="space-y-2">
                 <Label>HSL</Label>
                 <div className="flex gap-2">
-                  <Input value={hslString} readOnly />
+                  <Input value={`hsl(${hue}, ${saturation}%, ${lightness}%)`} readOnly />
                   <Button
                     variant="outline"
                     size="icon"
-                    onClick={() => copyToClipboard(hslString)}
+                    onClick={() => copyToClipboard(`hsl(${hue}, ${saturation}%, ${lightness}%)`)}
                   >
                     <Copy className="h-4 w-4" />
                   </Button>
