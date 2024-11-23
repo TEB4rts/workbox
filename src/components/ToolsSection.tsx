@@ -114,10 +114,10 @@ const ToolsSection = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {tools.map((tool, index) => (
-        <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+        <Card key={index} className="card-hover">
           <CardHeader>
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-primary/10 rounded-lg text-primary">
+              <div className="p-2 gradient-primary rounded-lg text-white">
                 {tool.icon}
               </div>
               <div>
@@ -128,7 +128,7 @@ const ToolsSection = () => {
           </CardHeader>
           <CardContent>
             <Button 
-              className="w-full"
+              className="w-full gradient-primary gradient-hover"
               onClick={() => navigate(tool.path)}
             >
               Open Tool

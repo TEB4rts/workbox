@@ -25,7 +25,7 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#7C3AED",
+          DEFAULT: "#0A4D68",
           foreground: "#FFFFFF",
         },
         secondary: {
@@ -33,7 +33,7 @@ export default {
           foreground: "#FFFFFF",
         },
         accent: {
-          DEFAULT: "#14B8A6",
+          DEFAULT: "#05BFDB",
           foreground: "#FFFFFF",
         },
         destructive: {
@@ -52,6 +52,14 @@ export default {
           DEFAULT: "#F59E0B",
           foreground: "#FFFFFF",
         },
+      },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
         "fade-in": {

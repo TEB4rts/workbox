@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,7 +12,7 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 262 83% 58%;
+    --primary: 201 96% 32%;
     --primary-foreground: 210 40% 98%;
     --secondary: 215 20% 65%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -22,8 +24,8 @@
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 262 83% 58%;
-    --radius: 0.5rem;
+    --ring: 201 96% 32%;
+    --radius: 1rem;
   }
  
   * {
@@ -31,15 +33,23 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased font-poppins;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight;
+    @apply font-poppins font-semibold tracking-tight;
   }
 }
 
 @layer utilities {
+  .gradient-primary {
+    @apply bg-gradient-to-r from-[#0A4D68] to-[#088395];
+  }
+  
+  .gradient-hover {
+    @apply hover:bg-gradient-to-r hover:from-[#088395] hover:to-[#05BFDB];
+  }
+
   .animate-fade-in {
     animation: fade-in 0.3s ease-out;
   }
@@ -47,4 +57,16 @@
   .animate-scale-in {
     animation: scale-in 0.2s ease-out;
   }
+}
+
+.logo-text {
+  @apply text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#0A4D68] to-[#05BFDB];
+}
+
+.nav-link {
+  @apply px-4 py-2 rounded-lg transition-all duration-200 hover:bg-primary/10;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-lg hover:scale-[1.02];
 }
