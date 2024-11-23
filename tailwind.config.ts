@@ -27,30 +27,37 @@ export default {
         primary: {
           DEFAULT: "#0A4D68",
           foreground: "#FFFFFF",
+          dark: "#083F56",
         },
         secondary: {
           DEFAULT: "#64748B",
           foreground: "#FFFFFF",
+          dark: "#4B5563",
         },
         accent: {
           DEFAULT: "#05BFDB",
           foreground: "#FFFFFF",
+          dark: "#049DBB",
         },
         destructive: {
           DEFAULT: "#F43F5E",
           foreground: "#FFFFFF",
+          dark: "#BE123C",
         },
         muted: {
           DEFAULT: "#F1F5F9",
           foreground: "#64748B",
+          dark: "#1F2937",
         },
         success: {
           DEFAULT: "#10B981",
           foreground: "#FFFFFF",
+          dark: "#059669",
         },
         warning: {
           DEFAULT: "#F59E0B",
           foreground: "#FFFFFF",
+          dark: "#D97706",
         },
       },
       fontFamily: {
@@ -74,6 +81,10 @@ export default {
       animation: {
         "fade-in": "fade-in 0.3s ease-out",
         "scale-in": "scale-in 0.2s ease-out",
+      },
+      backgroundImage: {
+        'gradient-primary': 'linear-gradient(to right, #0A4D68, #05BFDB)',
+        'gradient-primary-dark': 'linear-gradient(to right, #083F56, #049DBB)',
       },
     },
   },

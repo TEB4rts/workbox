@@ -1,6 +1,7 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "next-themes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -31,41 +32,43 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <div className="min-h-screen bg-gray-50">
-        <BrowserRouter>
-          <Header />
-          <main className="pt-20 pb-8">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/editor/:templateId" element={<Editor />} />
-              <Route path="/proposal/:templateId" element={<ProposalEditor />} />
-              <Route path="/invoice" element={<InvoiceGenerator />} />
-              <Route path="/portfolio" element={<PortfolioBuilder />} />
-              <Route path="/tools/rate-calculator" element={<RateCalculator />} />
-              <Route path="/tools/time-tracker" element={<TimeTracker />} />
-              <Route path="/tools/timeline" element={<Timeline />} />
-              <Route path="/tools/deadline-calculator" element={<DeadlineCalculator />} />
-              <Route path="/tools/agreement-generator" element={<AgreementGenerator />} />
-              <Route path="/tools/scope-builder" element={<ScopeBuilder />} />
-              <Route path="/tools/word-counter" element={<WordCounter />} />
-              <Route path="/tools/file-converter" element={<FileConverter />} />
-              <Route path="/tools/image-editor" element={<ImageEditor />} />
-              <Route path="/tools/qr-generator" element={<QRGenerator />} />
-              <Route path="/tools/unit-converter" element={<UnitConverter />} />
-              <Route path="/tools/color-picker" element={<ColorPicker />} />
-              <Route path="/tools/todo-list" element={<TodoListBuilder />} />
-              <Route path="/tools/grammar-checker" element={<GrammarChecker />} />
-              <Route path="/tools/plagiarism-checker" element={<PlagiarismChecker />} />
-              <Route path="/tools/proposal-customizer" element={<ProposalCustomizer />} />
-              <Route path="/tools/font-tool" element={<FontTool />} />
-            </Routes>
-          </main>
-        </BrowserRouter>
-      </div>
-      <Toaster />
-      <Sonner />
-    </TooltipProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <TooltipProvider>
+        <div className="min-h-screen bg-background">
+          <BrowserRouter>
+            <Header />
+            <main className="pt-20 pb-8">
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/editor/:templateId" element={<Editor />} />
+                <Route path="/proposal/:templateId" element={<ProposalEditor />} />
+                <Route path="/invoice" element={<InvoiceGenerator />} />
+                <Route path="/portfolio" element={<PortfolioBuilder />} />
+                <Route path="/tools/rate-calculator" element={<RateCalculator />} />
+                <Route path="/tools/time-tracker" element={<TimeTracker />} />
+                <Route path="/tools/timeline" element={<Timeline />} />
+                <Route path="/tools/deadline-calculator" element={<DeadlineCalculator />} />
+                <Route path="/tools/agreement-generator" element={<AgreementGenerator />} />
+                <Route path="/tools/scope-builder" element={<ScopeBuilder />} />
+                <Route path="/tools/word-counter" element={<WordCounter />} />
+                <Route path="/tools/file-converter" element={<FileConverter />} />
+                <Route path="/tools/image-editor" element={<ImageEditor />} />
+                <Route path="/tools/qr-generator" element={<QRGenerator />} />
+                <Route path="/tools/unit-converter" element={<UnitConverter />} />
+                <Route path="/tools/color-picker" element={<ColorPicker />} />
+                <Route path="/tools/todo-list" element={<TodoListBuilder />} />
+                <Route path="/tools/grammar-checker" element={<GrammarChecker />} />
+                <Route path="/tools/plagiarism-checker" element={<PlagiarismChecker />} />
+                <Route path="/tools/proposal-customizer" element={<ProposalCustomizer />} />
+                <Route path="/tools/font-tool" element={<FontTool />} />
+              </Routes>
+            </main>
+          </BrowserRouter>
+        </div>
+        <Toaster />
+        <Sonner />
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
