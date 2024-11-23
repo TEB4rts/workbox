@@ -98,5 +98,75 @@ Usability Testing:
 [Detailed usage terms]
 
 [Remaining sections follow similar structure to main template]`
+  },
+  {
+    id: 204,
+    name: "Motion Design Contract",
+    description: "Agreement for motion graphics and animation",
+    categoryId: 2,
+    details: [
+      "Animation specifications",
+      "Storyboard requirements",
+      "Sound design",
+      "Delivery format"
+    ],
+    logoPlaceholder: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    content: "Motion Design Contract template content..."
+  },
+  {
+    id: 205,
+    name: "Product Design Agreement",
+    description: "Contract for product design services",
+    categoryId: 2,
+    details: [
+      "Design specifications",
+      "Prototyping requirements",
+      "Manufacturing guidelines",
+      "Testing procedures"
+    ],
+    logoPlaceholder: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    content: "Product Design Agreement template content..."
+  },
+  {
+    id: 206,
+    name: "Print Design Contract",
+    description: "Agreement for print design services",
+    categoryId: 2,
+    details: [
+      "Print specifications",
+      "Color requirements",
+      "Material selection",
+      "Production guidelines"
+    ],
+    logoPlaceholder: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    content: "Print Design Contract template content..."
+  },
+  {
+    id: 207,
+    name: "3D Design Agreement",
+    description: "Contract for 3D modeling and rendering",
+    categoryId: 2,
+    details: [
+      "Model specifications",
+      "Texture requirements",
+      "Rendering quality",
+      "File formats"
+    ],
+    logoPlaceholder: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    content: "3D Design Agreement template content..."
+  },
+  {
+    id: 208,
+    name: "Game Design Contract",
+    description: "Agreement for game design services",
+    categoryId: 2,
+    details: [
+      "Game mechanics",
+      "Asset requirements",
+      "Level design",
+      "Testing procedures"
+    ],
+    logoPlaceholder: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    content: "Game Design Contract template content..."
   }
 ];

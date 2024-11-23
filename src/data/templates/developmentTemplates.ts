@@ -103,5 +103,75 @@ Technical Requirements:
 [Submission requirements and process]
 
 [Remaining sections follow similar structure to main template]`
+  },
+  {
+    id: 404,
+    name: "API Development Agreement",
+    description: "Contract for API development services",
+    categoryId: 3,
+    details: [
+      "API specifications",
+      "Authentication requirements",
+      "Documentation",
+      "Testing procedures"
+    ],
+    logoPlaceholder: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    content: "API Development Agreement template content..."
+  },
+  {
+    id: 405,
+    name: "DevOps Service Contract",
+    description: "Agreement for DevOps implementation",
+    categoryId: 3,
+    details: [
+      "Infrastructure setup",
+      "CI/CD pipeline",
+      "Monitoring tools",
+      "Security measures"
+    ],
+    logoPlaceholder: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    content: "DevOps Service Contract template content..."
+  },
+  {
+    id: 406,
+    name: "Database Development Agreement",
+    description: "Contract for database design and development",
+    categoryId: 3,
+    details: [
+      "Schema design",
+      "Data migration",
+      "Performance optimization",
+      "Backup procedures"
+    ],
+    logoPlaceholder: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    content: "Database Development Agreement template content..."
+  },
+  {
+    id: 407,
+    name: "AI Development Contract",
+    description: "Agreement for AI/ML development",
+    categoryId: 3,
+    details: [
+      "Model specifications",
+      "Training requirements",
+      "Performance metrics",
+      "Integration guidelines"
+    ],
+    logoPlaceholder: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    content: "AI Development Contract template content..."
+  },
+  {
+    id: 408,
+    name: "Blockchain Development Agreement",
+    description: "Contract for blockchain development",
+    categoryId: 3,
+    details: [
+      "Smart contract development",
+      "Network specifications",
+      "Security measures",
+      "Testing requirements"
+    ],
+    logoPlaceholder: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    content: "Blockchain Development Agreement template content..."
   }
 ];
