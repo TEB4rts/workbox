@@ -1,7 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -75,27 +72,16 @@
     @apply hover:bg-gradient-to-r hover:from-[#088395] hover:to-[#05BFDB] 
            dark:hover:from-[#072D3D] dark:hover:to-[#049DBB];
   }
-
-  .animate-fade-in {
-    animation: fade-in 0.3s ease-out;
-  }
-
-  .animate-scale-in {
-    animation: scale-in 0.2s ease-out;
-  }
 }
 
-.logo-text {
-  @apply text-2xl font-bold bg-clip-text text-transparent bg-gradient-primary 
-         dark:bg-gradient-primary-dark;
+.dark .dark-contrast {
+  @apply text-gray-200 bg-gray-800 border-gray-700;
 }
 
-.nav-link {
-  @apply px-4 py-2 rounded-lg transition-all duration-200 hover:bg-primary/10 
-         dark:hover:bg-primary/20 text-foreground;
+.dark .dark-input {
+  @apply bg-gray-700 text-gray-200 border-gray-600;
 }
 
-.card-hover {
-  @apply transition-all duration-300 hover:shadow-lg hover:scale-[1.02] 
-         dark:hover:shadow-accent/20;
+.dark .dark-card {
+  @apply bg-gray-800 border-gray-700;
 }
